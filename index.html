@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RARE | Execution Roadmap</title>
+    <title>RARE | Execution Roadmap & Reporting</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,6 +13,7 @@
             --card-bg: #FFFFFF;
             --secondary-accent: #E5D1CC;
             --muted-text: #666;
+            --alert-red: #A64444;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,48 +27,70 @@
 
         .container { max-width: 1200px; margin: 0 auto; }
 
-        /* Header & Mission */
+        /* Header */
         header { text-align: center; margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid var(--secondary-accent); }
         .brand-name { font-family: 'Playfair Display', serif; font-size: 3rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 10px; }
         .brand-name span { color: var(--accent-color); }
         .tagline { text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: var(--accent-color); font-weight: 600; }
         
-        .mission-section { text-align: center; margin: 40px 0 60px; padding: 0 10%; }
-        .mission-section h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 20px; }
-        .mission-section p { font-style: italic; font-size: 1.1rem; color: var(--muted-text); }
-
         /* Weekly Roadmap Grid */
-        .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .day-card { background: var(--card-bg); padding: 35px; border: 1px solid var(--secondary-accent); position: relative; }
-        .day-label { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent-color); border-bottom: 1px solid var(--secondary-accent); margin-bottom: 20px; padding-bottom: 10px; }
-        .day-subtitle { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 600; margin-bottom: 15px; display: block; }
+        .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .day-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--secondary-accent); transition: 0.3s; }
+        .day-card:hover { border-color: var(--accent-color); }
+        .day-label { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent-color); margin-bottom: 15px; display: block; border-bottom: 1px solid var(--bg-color); }
         
-        ul { list-style: none; margin-bottom: 20px; }
-        li { font-size: 0.9rem; margin-bottom: 8px; padding-left: 15px; position: relative; }
-        li::before { content: "•"; color: var(--accent-color); position: absolute; left: 0; }
-        
-        .deliverable-tag { font-size: 0.7rem; background: var(--bg-color); padding: 5px 10px; display: inline-block; margin: 5px 5px 0 0; border: 1px solid var(--secondary-accent); text-transform: uppercase; }
+        h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; color: var(--text-color); }
+        ul { list-style: none; margin-bottom: 15px; }
+        li { font-size: 0.85rem; margin-bottom: 6px; padding-left: 15px; position: relative; color: var(--muted-text); }
+        li::before { content: "—"; color: var(--accent-color); position: absolute; left: 0; }
 
-        /* KPI & Structure Footer */
-        .dashboard-footer { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; margin-top: 80px; }
-        .sidebar-box { background: var(--text-color); color: var(--bg-color); padding: 40px; border-radius: 4px; }
-        .sidebar-box h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 25px; color: var(--accent-color); }
-        
-        .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .kpi-item { border-left: 2px solid var(--accent-color); padding-left: 15px; }
-        .kpi-item span { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--secondary-accent); }
-        .kpi-item b { font-size: 1.1rem; font-family: 'Playfair Display', serif; }
+        /* Reporting Section */
+        .reporting-protocol {
+            background: var(--card-bg);
+            border: 1px solid var(--secondary-accent);
+            padding: 50px;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
 
-        .cycle-box { border: 1px solid var(--accent-color); padding: 30px; margin-top: 30px; }
-        .cycle-box h4 { font-family: 'Playfair Display', serif; margin-bottom: 15px; text-align: center; }
+        .report-box h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
+        .report-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .report-item { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; padding: 10px; border-bottom: 1px solid var(--bg-color); }
 
-        /* 30-60-90 Suggestion */
-        .roadmap-suggestion { margin-top: 60px; padding: 40px; background: var(--secondary-accent); text-align: center; border-radius: 4px; }
-        .roadmap-suggestion h2 { font-family: 'Playfair Display', serif; margin-bottom: 15px; }
+        /* Emergency Alert Styling */
+        .alert-box {
+            background: #fdf2f2;
+            border-left: 4px solid var(--alert-red);
+            padding: 30px;
+        }
+        .alert-box h3 { 
+            color: var(--alert-red); 
+            font-family: 'Playfair Display', serif; 
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .alert-box h3::before {
+            content: "!";
+            background: var(--alert-red);
+            color: white;
+            width: 20px; height: 20px;
+            display: inline-flex; align-items: center; justify-content: center;
+            border-radius: 50%; margin-right: 10px; font-family: sans-serif; font-size: 0.7rem;
+        }
+        .tag-mention {
+            background: var(--alert-red);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
 
         @media (max-width: 768px) {
-            .roadmap-grid { grid-template-columns: 1fr; }
-            .dashboard-footer { grid-template-columns: 1fr; }
+            .reporting-protocol { grid-template-columns: 1fr; padding: 30px; }
         }
     </style>
 </head>
@@ -75,153 +98,108 @@
 
 <div class="container">
     <header>
-        <div class="tagline">Vendor Growth & Partnership Strategy</div>
+        <div class="tagline">Execution & Growth Protocol</div>
         <h1 class="brand-name">R<span>A</span>RE</h1>
-        <div class="tagline">Week 1 Execution Roadmap</div>
+        <div class="tagline">Vendor Collaboration Week 01</div>
     </header>
 
-    <section class="mission-section">
-        <h1>The Mission</h1>
-        <p>"Transform Rare from a startup that approaches brands into a brand that companies actively want to collaborate with."</p>
-    </section>
-
     <div class="roadmap-grid">
-        <!-- Monday -->
+        <!-- Monday to Saturday Condensed for the Overview -->
         <div class="day-card">
-            <span class="day-subtitle">Internal Optimization</span>
-            <div class="day-label">Monday</div>
-            <h4>Existing Vendor Audit</h4>
+            <span class="day-label">Monday</span>
+            <h4>Vendor Audit</h4>
             <ul>
-                <li>Categorize vendors (Premium vs. Needs Support)</li>
-                <li>Identify health scores & information gaps</li>
-                <li>Collect USP & Brand Stories for every partner</li>
+                <li>Categorize by Health Score</li>
+                <li>Verify Contact Data</li>
+                <li>Identify Brand USPs</li>
             </ul>
-            <div class="deliverable-tag">Master Dashboard</div>
-            <div class="deliverable-tag">Health Report</div>
         </div>
-
-        <!-- Tuesday -->
         <div class="day-card">
-            <span class="day-subtitle">Vendor Success</span>
-            <div class="day-label">Tuesday</div>
-            <h4>Vendor Enablement</h4>
+            <span class="day-label">Tuesday</span>
+            <h4>Enablement</h4>
             <ul>
-                <li>Create high-end Vendor Welcome Kit</li>
-                <li>Photography & Branding SOPs</li>
-                <li>Onboarding optimization flow</li>
+        git        <li>Vendor Success Kit</li>
+                <li>Branding & SOP Guides</li>
+                <li>Onboarding Optimization</li>
             </ul>
-            <div class="deliverable-tag">Success Kit</div>
-            <div class="deliverable-tag">Onboarding Flow</div>
         </div>
-
-        <!-- Wednesday -->
         <div class="day-card">
-            <span class="day-subtitle">Strategic Expansion</span>
-            <div class="day-label">Wednesday</div>
-            <h4>Partnership Growth</h4>
+            <span class="day-label">Wednesday</span>
+            <h4>Expansion</h4>
             <ul>
-                <li>Target Beauty, Ayurvedic & Luxury Spas</li>
-                <li>Identify Decision Makers (LinkedIn/IG)</li>
-                <li>Map out corporate wellness opportunities</li>
+                <li>Luxury Spa & Clinic Outreach</li>
+                <li>LinkedIn Decision Makers</li>
+                <li>Corporate Wellness Targets</li>
             </ul>
-            <div class="deliverable-tag">Partnership DB</div>
-            <div class="deliverable-tag">Top 50 Targets</div>
         </div>
-
-        <!-- Thursday -->
         <div class="day-card">
-            <span class="day-subtitle">Brand Authority</span>
-            <div class="day-label">Thursday</div>
-            <h4>Visibility Engine</h4>
+            <span class="day-label">Thursday</span>
+            <h4>Visibility</h4>
             <ul>
-                <li>SEO Backlink strategy & Guest Blogs</li>
-                <li>Founder PR & Podcast outreach</li>
-                <li>Community engagement (Reddit/Quora)</li>
+                <li>SEO Backlink Database</li>
+                <li>Founder PR & Interviews</li>
+                <li>Community Engagement</li>
             </ul>
-            <div class="deliverable-tag">Backlink DB</div>
-            <div class="deliverable-tag">Visibility Strategy</div>
         </div>
-
-        <!-- Friday -->
         <div class="day-card">
-            <span class="day-subtitle">Advocacy Network</span>
-            <div class="day-label">Friday</div>
-            <h4>Creator Ecosystem</h4>
+            <span class="day-label">Friday</span>
+            <h4>Ambassadors</h4>
             <ul>
-                <li>Identify Medical & Wellness Ambassadors</li>
-                <li>Categorize by Engagement & Brand Fit</li>
-                <li>UGC & Campus Ambassador planning</li>
+                <li>Creator Fit Analysis</li>
+                <li>Doctor/Expert Outreach</li>
+                <li>Campus Ambassador Plan</li>
             </ul>
-            <div class="deliverable-tag">Ambassador Pipeline</div>
-            <div class="deliverable-tag">Budget Estimates</div>
         </div>
-
-        <!-- Saturday -->
         <div class="day-card">
-            <span class="day-subtitle">Growth Intelligence</span>
-            <div class="day-label">Saturday</div>
-            <h4>Analytics & Reporting</h4>
+            <span class="day-label">Saturday</span>
+            <h4>Intelligence</h4>
             <ul>
-                <li>Social performance & Search visibility audit</li>
-                <li>Review response rates from outreach</li>
-                <li>Finalize Founder Dashboard & Week 2 Plan</li>
+                <li>Website Growth Review</li>
+                <li>Competitor Performance</li>
+                <li>Weekly Progress Report</li>
             </ul>
-            <div class="deliverable-tag">Growth Report</div>
-            <div class="deliverable-tag">Founder Dashboard</div>
         </div>
     </div>
 
-    <div class="dashboard-footer">
-        <!-- Team & Systems -->
-        <div>
-            <div class="sidebar-box">
-                <h3>Systems to Build</h3>
-                <ul>
-                    <li>Vendor & Partnership CRM</li>
-                    <li>Growth & Analytics Tracker</li>
-                    <li>Task & Outreach Manager</li>
-                </ul>
-                <h3 style="margin-top: 30px;">Team structure</h3>
-                <p style="font-size: 0.8rem; margin-bottom: 10px;"><b>Me:</b> Strategy & Growth Planning</p>
-                <p style="font-size: 0.8rem; margin-bottom: 10px;"><b>Sara:</b> Research & Communication</p>
-                <p style="font-size: 0.8rem;"><b>Dhanush:</b> CRM & Verification</p>
-            </div>
+    <!-- NEW: Reporting & Alert Section -->
+    <section class="reporting-protocol">
+        <div class="report-box">
+            <h2>Weekly Progress Reporting</h2>
+            <p style="margin-bottom: 25px; font-style: italic; color: var(--muted-text);">A comprehensive analysis shared every weekend to ensure transparency and strategic alignment.</p>
             
-            <div class="cycle-box">
-                <h4>Daily Activity Cycle</h4>
-                <p style="font-size: 0.8rem; margin-bottom: 10px;"><b>AM:</b> Team Stand-up & Updates</p>
-                <p style="font-size: 0.8rem; margin-bottom: 10px;"><b>PM:</b> Research, Outreach & Meetings</p>
-                <p style="font-size: 0.8rem;"><b>EVE:</b> KPI Review & Reporting</p>
+            <div class="report-list">
+                <div class="report-item">Total Contacted</div>
+                <div class="report-item">Responses Received</div>
+                <div class="report-item">Interested Brands</div>
+                <div class="report-item">Follow-up Requests</div>
+                <div class="report-item">Declined (with reasons)</div>
+                <div class="report-item">Meetings Scheduled</div>
+                <div class="report-item">Collab Opportunities</div>
+                <div class="report-item">Next Week Recommendations</div>
             </div>
         </div>
 
-        <!-- Weekly KPIs -->
-        <div class="sidebar-box" style="background: #fff; color: var(--text-color); border: 1px solid var(--secondary-accent);">
-            <h3 style="color: var(--text-color);">Weekly KPIs</h3>
-            <div class="kpi-grid">
-                <div class="kpi-item"><span>Vendors</span><b>100% Onboarded</b></div>
-                <div class="kpi-item"><span>Partnerships</span><b>20 Proposals</b></div>
-                <div class="kpi-item"><span>Visibility</span><b>100 Backlinks</b></div>
-                <div class="kpi-item"><span>PR</span><b>30 Opportunities</b></div>
-                <div class="kpi-item"><span>Creators</span><b>25 Candidates</b></div>
-                <div class="kpi-item"><span>Content</span><b>20 Social Ideas</b></div>
-            </div>
-            
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--secondary-accent);">
-                <h4 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">Long Term Goal</h4>
-                <p style="font-size: 0.9rem; font-style: italic;">"Create a self-sustaining ecosystem where wellness brands see RARE as the preferred growth partner."</p>
+        <div class="alert-box">
+            <h3>High-Priority Protocol</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 20px;">
+                Certain milestones cannot wait for the weekly cycle. For <strong>immediate opportunities</strong>, we bypass the report and move to active response.
+            </p>
+            <ul style="margin-bottom: 20px;">
+                <li style="color: var(--text-color);">Brand ready to collaborate immediately</li>
+                <li style="color: var(--text-color);">Urgent meeting requests from founders</li>
+                <li style="color: var(--text-color);">Time-sensitive strategic decisions</li>
+            </ul>
+            <div style="background: white; padding: 15px; border: 1px dashed var(--alert-red); border-radius: 4px;">
+                <p style="font-size: 0.8rem; font-weight: 600;">
+                    <span class="tag-mention">@all</span> tag will be initiated in the group for instant visibility and rapid response.
+                </p>
             </div>
         </div>
-    </div>
-
-    <!-- 30-60-90 Suggestion -->
-    <section class="roadmap-suggestion">
-        <h2>Strategic Roadmap: 30-60-90 Day Plan</h2>
-        <p>Presenting this first week as part of a quarterly milestone to Founders/Investors to show measurable progress beyond initial tasks.</p>
     </section>
 
-    <footer style="margin-top: 60px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase; padding-bottom: 40px;">
-        RARE — ONE PLATFORM. THREE PILLARS. ONE FEELING.
+    <footer style="margin-top: 80px; text-align: center; padding-bottom: 40px;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase;">The Mirror is grounded in logic.</div>
+        <div style="font-size: 0.7rem; letter-spacing: 2px; color: var(--accent-color); margin-top: 10px; text-transform: uppercase;">Rare — Strategy & Execution 2024</div>
     </footer>
 </div>
 
