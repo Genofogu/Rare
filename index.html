@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RARE | Execution Roadmap & Reporting</title>
+    <title>RARE | Execution Roadmap</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,10 +13,15 @@
             --card-bg: #FFFFFF;
             --secondary-accent: #E5D1CC;
             --muted-text: #666;
-            --alert-red: #A64444;
+            --alert-red: #C75D4F;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
@@ -25,72 +30,440 @@
             padding: 40px 20px;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-        /* Header */
-        header { text-align: center; margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid var(--secondary-accent); }
-        .brand-name { font-family: 'Playfair Display', serif; font-size: 3rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 10px; }
-        .brand-name span { color: var(--accent-color); }
-        .tagline { text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: var(--accent-color); font-weight: 600; }
-        
-        /* Weekly Roadmap Grid */
-        .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 60px; }
-        .day-card { background: var(--card-bg); padding: 30px; border: 1px solid var(--secondary-accent); transition: 0.3s; }
-        .day-card:hover { border-color: var(--accent-color); }
-        .day-label { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent-color); margin-bottom: 15px; display: block; border-bottom: 1px solid var(--bg-color); }
-        
-        h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; color: var(--text-color); }
-        ul { list-style: none; margin-bottom: 15px; }
-        li { font-size: 0.85rem; margin-bottom: 6px; padding-left: 15px; position: relative; color: var(--muted-text); }
-        li::before { content: "—"; color: var(--accent-color); position: absolute; left: 0; }
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--secondary-accent);
+        }
 
-        /* Reporting Section */
-        .reporting-protocol {
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .brand-name span {
+            color: var(--accent-color);
+        }
+
+        .tagline {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.82rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .mission-section {
+            text-align: center;
+            margin: 40px 0 60px;
+            padding: 0 10%;
+        }
+
+        .mission-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .mission-section p {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--muted-text);
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .day-card {
             background: var(--card-bg);
+            padding: 35px;
             border: 1px solid var(--secondary-accent);
-            padding: 50px;
+            border-radius: 18px;
+            box-shadow: 0 14px 34px rgba(45, 41, 38, 0.08);
+            transition: transform 0.24s ease, box-shadow 0.24s ease;
+        }
+
+        .day-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 40px rgba(45, 41, 38, 0.12);
+        }
+
+        .day-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--secondary-accent);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        .day-subtitle {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+            color: var(--muted-text);
+        }
+
+        .day-card h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 18px;
+            font-size: 1.3rem;
+        }
+
+        .day-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+            padding-left: 0;
+        }
+
+        .day-card li {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            padding-left: 18px;
+            position: relative;
+            color: #3a3632;
+        }
+
+        .day-card li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+            line-height: 1;
+        }
+
+        .deliverable-tag {
+            font-size: 0.7rem;
+            background: var(--bg-color);
+            padding: 8px 12px;
+            display: inline-block;
+            margin: 5px 5px 0 0;
+            border: 1px solid var(--secondary-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 999px;
+        }
+
+        .dashboard-footer {
+            display: grid;
+            grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.5fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .sidebar-box {
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 40px;
+            border-radius: 18px;
+        }
+
+        .sidebar-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--accent-color);
+        }
+
+        .sidebar-box ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .sidebar-box li {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .sidebar-box li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .sidebar-box p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(253, 248, 245, 0.92);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-box b {
+            font-weight: 700;
+        }
+
+        .sidebar-box .small-heading {
+            margin-top: 30px;
+            margin-bottom: 18px;
+            color: var(--bg-color);
+        }
+
+        .kpi-summary-box {
+            background: #fff;
+            color: var(--text-color);
+            border: 1px solid var(--secondary-accent);
+            padding: 40px;
+            border-radius: 18px;
+        }
+
+        .kpi-summary-box h3 {
+            color: var(--text-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(140px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .kpi-item {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 18px;
+        }
+
+        .kpi-item span {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--secondary-accent);
+            margin-bottom: 8px;
+        }
+
+        .kpi-item b {
+            font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.25;
+        }
+
+        .kpi-summary-box .goal-copy {
             margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--secondary-accent);
+        }
+
+        .kpi-summary-box .goal-copy h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .kpi-summary-box .goal-copy p {
+            margin: 0;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--muted-text);
+        }
+
+        .cycle-box {
+            border: 1px solid var(--accent-color);
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 18px;
+            background: rgba(194, 139, 126, 0.08);
+        }
+
+        .cycle-box h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .cycle-box p {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .reporting-protocol {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 30px;
+            margin-top: 60px;
         }
 
-        .report-box h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
-        .report-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .report-item { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; padding: 10px; border-bottom: 1px solid var(--bg-color); }
-
-        /* Emergency Alert Styling */
+        .report-box,
         .alert-box {
-            background: #fdf2f2;
-            border-left: 4px solid var(--alert-red);
-            padding: 30px;
-        }
-        .alert-box h3 { 
-            color: var(--alert-red); 
-            font-family: 'Playfair Display', serif; 
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .alert-box h3::before {
-            content: "!";
-            background: var(--alert-red);
-            color: white;
-            width: 20px; height: 20px;
-            display: inline-flex; align-items: center; justify-content: center;
-            border-radius: 50%; margin-right: 10px; font-family: sans-serif; font-size: 0.7rem;
-        }
-        .tag-mention {
-            background: var(--alert-red);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-weight: 600;
-            font-size: 0.75rem;
+            border-radius: 18px;
+            padding: 36px;
         }
 
-        @media (max-width: 768px) {
-            .reporting-protocol { grid-template-columns: 1fr; padding: 30px; }
+        .report-box {
+            background: rgba(194, 139, 126, 0.12);
+            border: 1px solid rgba(194, 139, 126, 0.3);
+        }
+
+        .report-box h2 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 18px;
+            font-size: 1.8rem;
+        }
+
+        .report-box p {
+            margin-bottom: 24px;
+            color: var(--muted-text);
+        }
+
+        .report-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .report-item {
+            background: #fff;
+            padding: 16px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(45, 41, 38, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .alert-box {
+            background: #fff;
+            border: 1px solid rgba(199, 93, 79, 0.25);
+        }
+
+        .alert-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+            color: var(--accent-color);
+        }
+
+        .alert-box p {
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            color: var(--text-color);
+        }
+
+        .alert-box ul {
+            list-style: none;
+            margin-bottom: 20px;
+            padding-left: 0;
+        }
+
+        .alert-box li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        .alert-box li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .alert-note {
+            background: #fff7f5;
+            padding: 18px 20px;
+            border: 1px dashed var(--alert-red);
+            border-radius: 14px;
+        }
+
+        .alert-note p {
+            margin: 0;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #2d2926;
+        }
+
+        .tag-mention {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .roadmap-suggestion {
+            margin-top: 60px;
+            padding: 42px;
+            background: rgba(227, 209, 204, 0.4);
+            text-align: center;
+            border-radius: 18px;
+        }
+
+        .roadmap-suggestion h2 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 18px;
+            font-size: 1.9rem;
+        }
+
+        .roadmap-suggestion p {
+            max-width: 760px;
+            margin: 0 auto;
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            padding-bottom: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .dashboard-footer,
+            .reporting-protocol {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-section {
+                padding: 0 5%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 24px 14px;
+            }
+
+            .brand-name {
+                font-size: 2.4rem;
+                letter-spacing: 8px;
+            }
+
+            .roadmap-grid {
+                gap: 22px;
+            }
+
+            .day-card {
+                padding: 28px;
+            }
+
+            .dashboard-footer {
+                gap: 24px;
+            }
+
+            .report-box,
+            .alert-box {
+                padding: 28px;
+            }
         }
     </style>
 </head>
@@ -98,74 +471,150 @@
 
 <div class="container">
     <header>
-        <div class="tagline">Execution & Growth Protocol</div>
+        <div class="tagline">Vendor Growth & Partnership Strategy</div>
         <h1 class="brand-name">R<span>A</span>RE</h1>
-        <div class="tagline">Vendor Collaboration Week 01</div>
+        <div class="tagline">Week 1 Execution Roadmap</div>
     </header>
 
+    <section class="mission-section">
+        <h1>The Mission</h1>
+        <p>"Transform Rare from a startup that approaches brands into a brand that companies actively want to collaborate with."</p>
+    </section>
+
     <div class="roadmap-grid">
-        <!-- Monday to Saturday Condensed for the Overview -->
+        <!-- Monday -->
         <div class="day-card">
-            <span class="day-label">Monday</span>
-            <h4>Vendor Audit</h4>
+            <span class="day-subtitle">Internal Optimization</span>
+            <div class="day-label">Monday</div>
+            <h4>Existing Vendor Audit</h4>
             <ul>
-                <li>Categorize by Health Score</li>
-                <li>Verify Contact Data</li>
-                <li>Identify Brand USPs</li>
+                <li>Categorize vendors (Premium vs. Needs Support)</li>
+                <li>Identify health scores & information gaps</li>
+                <li>Collect USP & Brand Stories for every partner</li>
             </ul>
+            <div class="deliverable-tag">Master Dashboard</div>
+            <div class="deliverable-tag">Health Report</div>
         </div>
+
+        <!-- Tuesday -->
         <div class="day-card">
-            <span class="day-label">Tuesday</span>
-            <h4>Enablement</h4>
+            <span class="day-subtitle">Vendor Success</span>
+            <div class="day-label">Tuesday</div>
+            <h4>Vendor Enablement</h4>
             <ul>
-        git        <li>Vendor Success Kit</li>
-                <li>Branding & SOP Guides</li>
-                <li>Onboarding Optimization</li>
+                <li>Create high-end Vendor Welcome Kit</li>
+                <li>Photography & Branding SOPs</li>
+                <li>Onboarding optimization flow</li>
             </ul>
+            <div class="deliverable-tag">Success Kit</div>
+            <div class="deliverable-tag">Onboarding Flow</div>
         </div>
+
+        <!-- Wednesday -->
         <div class="day-card">
-            <span class="day-label">Wednesday</span>
-            <h4>Expansion</h4>
+            <span class="day-subtitle">Strategic Expansion</span>
+            <div class="day-label">Wednesday</div>
+            <h4>Partnership Growth</h4>
             <ul>
-                <li>Luxury Spa & Clinic Outreach</li>
-                <li>LinkedIn Decision Makers</li>
-                <li>Corporate Wellness Targets</li>
+                <li>Target Beauty, Ayurvedic & Luxury Spas</li>
+                <li>Identify Decision Makers (LinkedIn/IG)</li>
+                <li>Map out corporate wellness opportunities</li>
             </ul>
+            <div class="deliverable-tag">Partnership DB</div>
+            <div class="deliverable-tag">Top 50 Targets</div>
         </div>
+
+        <!-- Thursday -->
         <div class="day-card">
-            <span class="day-label">Thursday</span>
-            <h4>Visibility</h4>
+            <span class="day-subtitle">Brand Authority</span>
+            <div class="day-label">Thursday</div>
+            <h4>Visibility Engine</h4>
             <ul>
-                <li>SEO Backlink Database</li>
-                <li>Founder PR & Interviews</li>
-                <li>Community Engagement</li>
+                <li>SEO Backlink strategy & Guest Blogs</li>
+                <li>Founder PR & Podcast outreach</li>
+                <li>Community engagement (Reddit/Quora)</li>
             </ul>
+            <div class="deliverable-tag">Backlink DB</div>
+            <div class="deliverable-tag">Visibility Strategy</div>
         </div>
+
+        <!-- Friday -->
         <div class="day-card">
-            <span class="day-label">Friday</span>
-            <h4>Ambassadors</h4>
+            <span class="day-subtitle">Advocacy Network</span>
+            <div class="day-label">Friday</div>
+            <h4>Creator Ecosystem</h4>
             <ul>
-                <li>Creator Fit Analysis</li>
-                <li>Doctor/Expert Outreach</li>
-                <li>Campus Ambassador Plan</li>
+                <li>Identify Medical & Wellness Ambassadors</li>
+                <li>Categorize by Engagement & Brand Fit</li>
+                <li>UGC & Campus Ambassador planning</li>
             </ul>
+            <div class="deliverable-tag">Ambassador Pipeline</div>
+            <div class="deliverable-tag">Budget Estimates</div>
         </div>
+
+        <!-- Saturday -->
         <div class="day-card">
-            <span class="day-label">Saturday</span>
-            <h4>Intelligence</h4>
+            <span class="day-subtitle">Growth Intelligence</span>
+            <div class="day-label">Saturday</div>
+            <h4>Analytics & Reporting</h4>
             <ul>
-                <li>Website Growth Review</li>
-                <li>Competitor Performance</li>
-                <li>Weekly Progress Report</li>
+                <li>Social performance & Search visibility audit</li>
+                <li>Review response rates from outreach</li>
+                <li>Finalize Founder Dashboard & Week 2 Plan</li>
             </ul>
+            <div class="deliverable-tag">Growth Report</div>
+            <div class="deliverable-tag">Founder Dashboard</div>
         </div>
     </div>
 
-    <!-- NEW: Reporting & Alert Section -->
+    <div class="dashboard-footer">
+        <!-- Team & Systems -->
+        <div>
+            <div class="sidebar-box">
+                <h3>Systems to Build</h3>
+                <ul>
+                    <li>Vendor & Partnership CRM</li>
+                    <li>Growth & Analytics Tracker</li>
+                    <li>Task & Outreach Manager</li>
+                </ul>
+                <h3 class="small-heading">Team structure</h3>
+                <p><b>Me:</b> Strategy & Growth Planning</p>
+                <p><b>Team1:</b> Research & Communication</p>
+                <p><b>Team2:</b> CRM & Verification</p>
+            </div>
+            
+            <div class="cycle-box">
+                <h4>Daily Activity Cycle</h4>
+                <p><b>AM:</b> Team Stand-up & Updates</p>
+                <p><b>PM:</b> Research, Outreach & Meetings</p>
+                <p><b>EVE:</b> KPI Review & Reporting</p>
+            </div>
+        </div>
+
+        <!-- Weekly KPIs -->
+            <div class="kpi-summary-box">
+            <h3>Weekly KPIs</h3>
+            <div class="kpi-grid">
+                <div class="kpi-item"><span>Vendors</span><b>100% Onboarded</b></div>
+                <div class="kpi-item"><span>Partnerships</span><b>20 Proposals</b></div>
+                <div class="kpi-item"><span>Visibility</span><b>100 Backlinks</b></div>
+                <div class="kpi-item"><span>PR</span><b>30 Opportunities</b></div>
+                <div class="kpi-item"><span>Creators</span><b>25 Candidates</b></div>
+                <div class="kpi-item"><span>Content</span><b>20 Social Ideas</b></div>
+            </div>
+            
+            <div class="goal-copy">
+                <h4>Long Term Goal</h4>
+                <p>"Create a self-sustaining ecosystem where wellness brands see RARE as the preferred growth partner."</p>
+            </div>
+        </div>
+    </div>
+
+       <!-- NEW: Reporting & Alert Section -->
     <section class="reporting-protocol">
         <div class="report-box">
             <h2>Weekly Progress Reporting</h2>
-            <p style="margin-bottom: 25px; font-style: italic; color: var(--muted-text);">A comprehensive analysis shared every weekend to ensure transparency and strategic alignment.</p>
+            <p>A comprehensive analysis shared every weekend to ensure transparency and strategic alignment.</p>
             
             <div class="report-list">
                 <div class="report-item">Total Contacted</div>
@@ -181,25 +630,26 @@
 
         <div class="alert-box">
             <h3>High-Priority Protocol</h3>
-            <p style="font-size: 0.9rem; margin-bottom: 20px;">
-                Certain milestones cannot wait for the weekly cycle. For <strong>immediate opportunities</strong>, we bypass the report and move to active response.
-            </p>
-            <ul style="margin-bottom: 20px;">
-                <li style="color: var(--text-color);">Brand ready to collaborate immediately</li>
-                <li style="color: var(--text-color);">Urgent meeting requests from founders</li>
-                <li style="color: var(--text-color);">Time-sensitive strategic decisions</li>
+            <p>Certain milestones cannot wait for the weekly cycle. For <strong>immediate opportunities</strong>, we bypass the report and move to active response.</p>
+            <ul>
+                <li>Brand ready to collaborate immediately</li>
+                <li>Urgent meeting requests from founders</li>
+                <li>Time-sensitive strategic decisions</li>
             </ul>
-            <div style="background: white; padding: 15px; border: 1px dashed var(--alert-red); border-radius: 4px;">
-                <p style="font-size: 0.8rem; font-weight: 600;">
-                    <span class="tag-mention">@all</span> tag will be initiated in the group for instant visibility and rapid response.
-                </p>
+            <div class="alert-note">
+                <p><span class="tag-mention">@all</span> tag will be initiated in the group for instant visibility and rapid response.</p>
             </div>
         </div>
     </section>
 
-    <footer style="margin-top: 80px; text-align: center; padding-bottom: 40px;">
-        <div style="font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase;">The Mirror is grounded in logic.</div>
-        <div style="font-size: 0.7rem; letter-spacing: 2px; color: var(--accent-color); margin-top: 10px; text-transform: uppercase;">Rare — Strategy & Execution 2024</div>
+    <!-- 30-60-90 Suggestion -->
+    <section class="roadmap-suggestion">
+        <h2>Strategic Roadmap: 30-60-90 Day Plan</h2>
+        <p>Presenting this first week as part of a quarterly milestone to Founders/Investors to show measurable progress beyond initial tasks.</p>
+    </section>
+
+    <footer>
+        RARE — ONE PLATFORM. THREE PILLARS. ONE FEELING.
     </footer>
 </div>
 
