@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RARE | Vendor Collaboration & Growth Plan</title>
+    <title>RARE | Execution Roadmap</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,14 +12,10 @@
             --text-color: #2D2926;
             --card-bg: #FFFFFF;
             --secondary-accent: #E5D1CC;
+            --muted-text: #666;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-color);
@@ -28,175 +24,50 @@
             padding: 40px 20px;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
 
-        /* Header Section */
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-            border-bottom: 1px solid var(--secondary-accent);
-            padding-bottom: 40px;
-        }
+        /* Header & Mission */
+        header { text-align: center; margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid var(--secondary-accent); }
+        .brand-name { font-family: 'Playfair Display', serif; font-size: 3rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 10px; }
+        .brand-name span { color: var(--accent-color); }
+        .tagline { text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: var(--accent-color); font-weight: 600; }
+        
+        .mission-section { text-align: center; margin: 40px 0 60px; padding: 0 10%; }
+        .mission-section h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 20px; }
+        .mission-section p { font-style: italic; font-size: 1.1rem; color: var(--muted-text); }
 
-        .brand-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: var(--text-color);
-            margin-bottom: 10px;
-        }
+        /* Weekly Roadmap Grid */
+        .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .day-card { background: var(--card-bg); padding: 35px; border: 1px solid var(--secondary-accent); position: relative; }
+        .day-label { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent-color); border-bottom: 1px solid var(--secondary-accent); margin-bottom: 20px; padding-bottom: 10px; }
+        .day-subtitle { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; font-weight: 600; margin-bottom: 15px; display: block; }
+        
+        ul { list-style: none; margin-bottom: 20px; }
+        li { font-size: 0.9rem; margin-bottom: 8px; padding-left: 15px; position: relative; }
+        li::before { content: "•"; color: var(--accent-color); position: absolute; left: 0; }
+        
+        .deliverable-tag { font-size: 0.7rem; background: var(--bg-color); padding: 5px 10px; display: inline-block; margin: 5px 5px 0 0; border: 1px solid var(--secondary-accent); text-transform: uppercase; }
 
-        .brand-name span {
-            color: var(--accent-color);
-        }
+        /* KPI & Structure Footer */
+        .dashboard-footer { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; margin-top: 80px; }
+        .sidebar-box { background: var(--text-color); color: var(--bg-color); padding: 40px; border-radius: 4px; }
+        .sidebar-box h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 25px; color: var(--accent-color); }
+        
+        .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .kpi-item { border-left: 2px solid var(--accent-color); padding-left: 15px; }
+        .kpi-item span { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--secondary-accent); }
+        .kpi-item b { font-size: 1.1rem; font-family: 'Playfair Display', serif; }
 
-        .subtitle {
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: var(--accent-color);
-        }
+        .cycle-box { border: 1px solid var(--accent-color); padding: 30px; margin-top: 30px; }
+        .cycle-box h4 { font-family: 'Playfair Display', serif; margin-bottom: 15px; text-align: center; }
 
-        /* Objective Section */
-        .objective-box {
-            background-color: var(--card-bg);
-            padding: 40px;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            margin-bottom: 50px;
-            text-align: center;
-            border: 1px solid var(--secondary-accent);
-        }
-
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .objective-box p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-style: italic;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-        }
-
-        /* Weekly Grid */
-        .weekly-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
-        }
-
-        .day-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 2px;
-            border-left: 4px solid var(--accent-color);
-            transition: transform 0.3s ease;
-        }
-
-        .day-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .day-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .day-card h4 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 15px;
-            color: #888;
-        }
-
-        .day-card ul {
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        .day-card li {
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .day-card li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-        }
-
-        /* Checklist style */
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-top: 5px;
-            color: var(--text-color);
-        }
-
-        .checklist-item input {
-            margin-right: 10px;
-            accent-color: var(--accent-color);
-        }
-
-        /* Bottom Sections */
-        .footer-info {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 40px;
-        }
-
-        .team-box, .kpi-box {
-            background-color: var(--secondary-accent);
-            padding: 40px;
-            border-radius: 4px;
-        }
-
-        .team-box h3, .kpi-box h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding-bottom: 10px;
-        }
-
-        .member {
-            margin-bottom: 15px;
-        }
-
-        .member b {
-            color: var(--accent-color);
-        }
-
-        .kpi-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
+        /* 30-60-90 Suggestion */
+        .roadmap-suggestion { margin-top: 60px; padding: 40px; background: var(--secondary-accent); text-align: center; border-radius: 4px; }
+        .roadmap-suggestion h2 { font-family: 'Playfair Display', serif; margin-bottom: 15px; }
 
         @media (max-width: 768px) {
-            .footer-info { grid-template-columns: 1fr; }
-            .brand-name { font-size: 2.5rem; }
+            .roadmap-grid { grid-template-columns: 1fr; }
+            .dashboard-footer { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -204,126 +75,153 @@
 
 <div class="container">
     <header>
-        <div class="subtitle">Relaxed & Refresh</div>
+        <div class="tagline">Vendor Growth & Partnership Strategy</div>
         <h1 class="brand-name">R<span>A</span>RE</h1>
-        <div class="subtitle">Vendor Collaboration & Growth Plan | Week 01</div>
+        <div class="tagline">Week 1 Execution Roadmap</div>
     </header>
 
-    <section class="objective-box">
-        <h2>The Objective</h2>
-        <p>"To build a strong foundation for the Vendor Collaboration vertical by identifying premium brands, initiating partnerships, and increasing Rare's visibility."</p>
+    <section class="mission-section">
+        <h1>The Mission</h1>
+        <p>"Transform Rare from a startup that approaches brands into a brand that companies actively want to collaborate with."</p>
     </section>
 
-    <div class="weekly-grid">
+    <div class="roadmap-grid">
         <!-- Monday -->
         <div class="day-card">
-            <div class="day-name">Monday <span>01</span></div>
-            <h4>Vendor Research</h4>
+            <span class="day-subtitle">Internal Optimization</span>
+            <div class="day-label">Monday</div>
+            <h4>Existing Vendor Audit</h4>
             <ul>
-                <li>75-100 premium beauty brands</li>
-                <li>Categorize by Size, Founder, Socials</li>
-                <li>Identify Marketing Contacts</li>
+                <li>Categorize vendors (Premium vs. Needs Support)</li>
+                <li>Identify health scores & information gaps</li>
+                <li>Collect USP & Brand Stories for every partner</li>
             </ul>
-            <h4>Deliverables</h4>
-            <div class="checklist-item"><input type="checkbox"> Vendor Master Database</div>
-            <div class="checklist-item"><input type="checkbox"> Priority List (Top 20)</div>
+            <div class="deliverable-tag">Master Dashboard</div>
+            <div class="deliverable-tag">Health Report</div>
         </div>
 
         <!-- Tuesday -->
         <div class="day-card">
-            <div class="day-name">Tuesday <span>02</span></div>
-            <h4>Outreach Prep</h4>
+            <span class="day-subtitle">Vendor Success</span>
+            <div class="day-label">Tuesday</div>
+            <h4>Vendor Enablement</h4>
             <ul>
-                <li>Professional email templates</li>
-                <li>Collaboration pitch deck refined</li>
-                <li>LinkedIn/IG DM sequence</li>
+                <li>Create high-end Vendor Welcome Kit</li>
+                <li>Photography & Branding SOPs</li>
+                <li>Onboarding optimization flow</li>
             </ul>
-            <h4>Deliverables</h4>
-            <div class="checklist-item"><input type="checkbox"> Template Approval</div>
-            <div class="checklist-item"><input type="checkbox"> Follow-up Workflow</div>
+            <div class="deliverable-tag">Success Kit</div>
+            <div class="deliverable-tag">Onboarding Flow</div>
         </div>
 
         <!-- Wednesday -->
         <div class="day-card">
-            <div class="day-name">Wednesday <span>03</span></div>
-            <h4>Vendor Outreach</h4>
+            <span class="day-subtitle">Strategic Expansion</span>
+            <div class="day-label">Wednesday</div>
+            <h4>Partnership Growth</h4>
             <ul>
-                <li>Contact first batch (25-30)</li>
-                <li>Send collaboration invitations</li>
-                <li>Track response rates</li>
+                <li>Target Beauty, Ayurvedic & Luxury Spas</li>
+                <li>Identify Decision Makers (LinkedIn/IG)</li>
+                <li>Map out corporate wellness opportunities</li>
             </ul>
-            <h4>Deliverables</h4>
-            <div class="checklist-item"><input type="checkbox"> 30 Outreach Messages</div>
-            <div class="checklist-item"><input type="checkbox"> Status Tracking Sheet</div>
+            <div class="deliverable-tag">Partnership DB</div>
+            <div class="deliverable-tag">Top 50 Targets</div>
         </div>
 
         <!-- Thursday -->
         <div class="day-card">
-            <div class="day-name">Thursday <span>04</span></div>
-            <h4>Influencer Research</h4>
+            <span class="day-subtitle">Brand Authority</span>
+            <div class="day-label">Thursday</div>
+            <h4>Visibility Engine</h4>
             <ul>
-                <li>Beauty & Ingredient educators</li>
-                <li>Sponsored & Paid feature pages</li>
-                <li>Analyze Reach & Engagement</li>
+                <li>SEO Backlink strategy & Guest Blogs</li>
+                <li>Founder PR & Podcast outreach</li>
+                <li>Community engagement (Reddit/Quora)</li>
             </ul>
-            <h4>Deliverables</h4>
-            <div class="checklist-item"><input type="checkbox"> Shortlisted Creators</div>
-            <div class="checklist-item"><input type="checkbox"> Cost Comparison Report</div>
+            <div class="deliverable-tag">Backlink DB</div>
+            <div class="deliverable-tag">Visibility Strategy</div>
         </div>
 
         <!-- Friday -->
         <div class="day-card">
-            <div class="day-name">Friday <span>05</span></div>
-            <h4>Market Analysis</h4>
+            <span class="day-subtitle">Advocacy Network</span>
+            <div class="day-label">Friday</div>
+            <h4>Creator Ecosystem</h4>
             <ul>
-                <li>Study Tira, Nykaa, Smytten</li>
-                <li>Analyze Content & Positioning</li>
-                <li>Identify growth opportunities</li>
+                <li>Identify Medical & Wellness Ambassadors</li>
+                <li>Categorize by Engagement & Brand Fit</li>
+                <li>UGC & Campus Ambassador planning</li>
             </ul>
-            <h4>Deliverables</h4>
-            <div class="checklist-item"><input type="checkbox"> Competitive Analysis</div>
-            <div class="checklist-item"><input type="checkbox"> Strategy Insights</div>
+            <div class="deliverable-tag">Ambassador Pipeline</div>
+            <div class="deliverable-tag">Budget Estimates</div>
         </div>
 
         <!-- Saturday -->
         <div class="day-card">
-            <div class="day-name">Saturday <span>06</span></div>
-            <h4>Weekly Analysis</h4>
+            <span class="day-subtitle">Growth Intelligence</span>
+            <div class="day-label">Saturday</div>
+            <h4>Analytics & Reporting</h4>
             <ul>
-                <li>Review positive responses</li>
-                <li>Identify bottleneck/challenges</li>
-                <li>Finalize Next Week Roadmap</li>
+                <li>Social performance & Search visibility audit</li>
+                <li>Review response rates from outreach</li>
+                <li>Finalize Founder Dashboard & Week 2 Plan</li>
             </ul>
-            <h4>Deliverables</h4>
-            <div class="checklist-item"><input type="checkbox"> Weekly Vendor Report</div>
-            <div class="checklist-item"><input type="checkbox"> Next Week Strategy</div>
+            <div class="deliverable-tag">Growth Report</div>
+            <div class="deliverable-tag">Founder Dashboard</div>
         </div>
     </div>
 
-    <div class="footer-info">
-        <div class="team-box">
-            <h3>Team Allocation</h3>
-            <div class="member"><b>My Responsibilities:</b> Strategy, Planning, Influencer curation, & Reporting.</div>
-            <div class="member"><b>Sara:</b> Vendor Research & Data Collection.</div>
-            <div class="member"><b>Dhanush:</b> Contact Verification & Database Updates.</div>
-            <div class="member"><b>Priyanka:</b> HR & Hiring Coordination.</div>
+    <div class="dashboard-footer">
+        <!-- Team & Systems -->
+        <div>
+            <div class="sidebar-box">
+                <h3>Systems to Build</h3>
+                <ul>
+                    <li>Vendor & Partnership CRM</li>
+                    <li>Growth & Analytics Tracker</li>
+                    <li>Task & Outreach Manager</li>
+                </ul>
+                <h3 style="margin-top: 30px;">Team structure</h3>
+                <p style="font-size: 0.8rem; margin-bottom: 10px;"><b>Me:</b> Strategy & Growth Planning</p>
+                <p style="font-size: 0.8rem; margin-bottom: 10px;"><b>Sara:</b> Research & Communication</p>
+                <p style="font-size: 0.8rem;"><b>Dhanush:</b> CRM & Verification</p>
+            </div>
+            
+            <div class="cycle-box">
+                <h4>Daily Activity Cycle</h4>
+                <p style="font-size: 0.8rem; margin-bottom: 10px;"><b>AM:</b> Team Stand-up & Updates</p>
+                <p style="font-size: 0.8rem; margin-bottom: 10px;"><b>PM:</b> Research, Outreach & Meetings</p>
+                <p style="font-size: 0.8rem;"><b>EVE:</b> KPI Review & Reporting</p>
+            </div>
         </div>
 
-        <div class="kpi-box">
-            <h3>Weekly KPIs</h3>
-            <div class="kpi-list">
-                <div class="checklist-item"><input type="checkbox" checked> 100+ Brands</div>
-                <div class="checklist-item"><input type="checkbox" checked> 20 Priority</div>
-                <div class="checklist-item"><input type="checkbox" checked> 30+ Outreach</div>
-                <div class="checklist-item"><input type="checkbox" checked> 30 Influencers</div>
-                <div class="checklist-item"><input type="checkbox" checked> 1 Comp Report</div>
-                <div class="checklist-item"><input type="checkbox" checked> 1 Exec Report</div>
+        <!-- Weekly KPIs -->
+        <div class="sidebar-box" style="background: #fff; color: var(--text-color); border: 1px solid var(--secondary-accent);">
+            <h3 style="color: var(--text-color);">Weekly KPIs</h3>
+            <div class="kpi-grid">
+                <div class="kpi-item"><span>Vendors</span><b>100% Onboarded</b></div>
+                <div class="kpi-item"><span>Partnerships</span><b>20 Proposals</b></div>
+                <div class="kpi-item"><span>Visibility</span><b>100 Backlinks</b></div>
+                <div class="kpi-item"><span>PR</span><b>30 Opportunities</b></div>
+                <div class="kpi-item"><span>Creators</span><b>25 Candidates</b></div>
+                <div class="kpi-item"><span>Content</span><b>20 Social Ideas</b></div>
+            </div>
+            
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--secondary-accent);">
+                <h4 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">Long Term Goal</h4>
+                <p style="font-size: 0.9rem; font-style: italic;">"Create a self-sustaining ecosystem where wellness brands see RARE as the preferred growth partner."</p>
             </div>
         </div>
     </div>
 
-    <footer style="margin-top: 60px; text-align: center; font-size: 0.8rem; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase;">
-        RARE — The atmosphere is defined. The Mirror is grounded in logic.
+    <!-- 30-60-90 Suggestion -->
+    <section class="roadmap-suggestion">
+        <h2>Strategic Roadmap: 30-60-90 Day Plan</h2>
+        <p>Presenting this first week as part of a quarterly milestone to Founders/Investors to show measurable progress beyond initial tasks.</p>
+    </section>
+
+    <footer style="margin-top: 60px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; color: var(--accent-color); text-transform: uppercase; padding-bottom: 40px;">
+        RARE — ONE PLATFORM. THREE PILLARS. ONE FEELING.
     </footer>
 </div>
 
